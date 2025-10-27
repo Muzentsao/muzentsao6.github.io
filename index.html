@@ -345,51 +345,70 @@
             <p class="mb-8 opacity-90">填寫表單後，我們將盡快與您聯繫，為您規劃完美的聖誕派對方案</p>
             
             <div class="space-y-6">
-              <div class="flex items-start">
-                <div class="mt-1 mr-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i class="fa fa-phone"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold mb-1">電話諮詢</h3>
-                  <p class="opacity-80">02-2883-2113</p>
-                </div>
-              </div>
-              
-              <div class="flex items-start">
-                <div class="mt-1 mr-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i class="fa fa-envelope"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold mb-1">電子郵件</h3>
-                  <p class="opacity-80">muzentsao@muzentsao.com</p>
-                </div>
-              </div>
-              
-              <div class="flex items-start">
-                <div class="mt-1 mr-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                  <i class="fa fa-clock-o"></i>
-                </div>
-                <div>
-                  <h3 class="font-bold mb-1">服務時間</h3>
-                  <p class="opacity-80">週一至週五 9:00-18:00</p>
-                </div>
-              </div>
-            </div>
+  <div class="flex items-start">
+    <div class="mt-1 mr-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+      <i class="fa fa-phone"></i>
+    </div>
+    <div>
+      <h3 class="font-bold mb-1">電話諮詢</h3>
+      <p class="opacity-80">
+        <a href="tel:+886228832113" class="underline underline-offset-4">02-2883-2113</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="flex items-start">
+    <div class="mt-1 mr-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+      <i class="fa fa-envelope"></i>
+    </div>
+    <div>
+      <h3 class="font-bold mb-1">電子郵件</h3>
+      <p class="opacity-80">
+        <a href="mailto:muzentsao@muzentsao.com" class="underline underline-offset-4">muzentsao@muzentsao.com</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="flex items-start">
+    <div class="mt-1 mr-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+      <i class="fa fa-clock-o"></i>
+    </div>
+    <div>
+      <h3 class="font-bold mb-1">服務時間</h3>
+      <p class="opacity-80">週一至週五 9:00-18:00</p>
+    </div>
+  </div>
+</div>
             
             <div class="mt-12">
-              <h3 class="font-bold mb-4">關注我們</h3>
-              <div class="flex space-x-4">
-                <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
-                  <i class="fa fa-facebook"></i>
-                </a>
-                <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
-                  <i class="fa fa-instagram"></i>
-                </a>
-                <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
-                  <i class="fa fa-line"></i>
-                </a>
-              </div>
-            </div>
+  <h3 class="font-bold mb-4">關注我們</h3>
+  <div class="flex space-x-4">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/muzentsao/?locale=zh_TW&utm_source=site_footer&utm_medium=icon&utm_campaign=social"
+       target="_blank" rel="noopener"
+       class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+       aria-label="前往 Facebook：木人艸">
+      <i class="fa fa-facebook-square"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/muzentsaocatering/?utm_source=site_footer&utm_medium=icon&utm_campaign=social"
+       target="_blank" rel="noopener"
+       class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+       aria-label="前往 Instagram：木人艸">
+      <i class="fa fa-instagram"></i>
+    </a>
+
+    <!-- LINE（先嘗試打開 App，失敗再開網頁）-->
+    <a href="https://lin.ee/GDoyPqd?utm_source=site_footer&utm_medium=icon&utm_campaign=social"
+       onclick="try{window.location='line://ti/p/@muzentsao'; setTimeout(function(){window.open('https://lin.ee/GDoyPqd?utm_source=site_footer&utm_medium=icon&utm_campaign=social','_blank');},700);}catch(e){}"
+       target="_blank" rel="noopener"
+       class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors"
+       aria-label="加入 LINE：木人艸">
+      <i class="fa fa-comment"></i>
+    </a>
+  </div>
+</div>
           </div>
           
           <div class="p-8 md:p-12">
@@ -483,16 +502,23 @@
         <div>
           <h4 class="font-bold mb-4">聯繫資訊</h4>
           <ul class="space-y-2">
-            <li class="flex items-center text-gray-400">
-              <i class="fa fa-phone mr-2"></i> 02-2883-2113
-            </li>
-            <li class="flex items-center text-gray-400">
-              <i class="fa fa-envelope mr-2"></i> muzentsao@muzentsao.com
-            </li>
-            <li class="flex items-center text-gray-400">
-              <i class="fa fa-map-marker mr-2"></i> 台北市士林區後港街185號4樓
-            </li>
-          </ul>
+  <li class="flex items-center text-gray-400">
+    <i class="fa fa-phone mr-2"></i>
+    <a href="tel:+886228832113" class="hover:text-white transition-colors">02-2883-2113</a>
+  </li>
+  <li class="flex items-center text-gray-400">
+    <i class="fa fa-envelope mr-2"></i>
+    <a href="mailto:muzentsao@muzentsao.com" class="hover:text-white transition-colors">muzentsao@muzentsao.com</a>
+  </li>
+  <li class="flex items-center text-gray-400">
+    <i class="fa fa-map-marker mr-2"></i>
+    <a href="https://maps.google.com/?q=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A3%AB%E6%9E%97%E5%8D%80%E5%BE%8C%E6%B8%AF%E8%A1%97185%E8%99%9F4%E6%A8%93&utm_source=site_footer&utm_medium=link&utm_campaign=contact"
+       target="_blank" rel="noopener"
+       class="hover:text-white transition-colors">
+      台北市士林區後港街185號4樓
+    </a>
+  </li>
+</ul>
         </div>
       </div>
       

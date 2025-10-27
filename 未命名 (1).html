@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>木人艸｜聖誕節外燴，一站式完成</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#C70039', // 圣诞红
+            secondary: '#0B5345', // 圣诞绿
+            accent: '#FFC300', // 金色点缀
+            light: '#F8F9FA',
+            dark: '#2C3E50'
+          },
+          fontFamily: {
+            sans: ['Noto Sans TC', 'sans-serif'],
+            display: ['Playfair Display', 'serif']
+          },
+        },
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .text-shadow-lg {
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+      }
+      .bg-blur {
+        backdrop-filter: blur(8px);
+      }
+      .snowflake {
+        position: absolute;
+        color: white;
+        opacity: 0.7;
+        animation: fall linear infinite;
+        z-index: 1;
+      }
+      @keyframes fall {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+      .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      .faq-transition {
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans text-dark bg-light overflow-x-hidden">
+  <!-- 雪花动画效果 -->
+  <div id="snow-container" class="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></div>
+
+  <!-- 导航栏：移除「情境方案」链接 -->
+  <header id="navbar" class="fixed w-full z-40 transition-all duration-300">
+    <nav class="bg-white/80 bg-blur shadow-md py-4 px-6 md:px-12 transition-all duration-300">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="flex items-center space-x-2">
+          <span class="text-primary text-2xl font-display font-bold">木人艸</span>
+          <span class="hidden md:inline-block text-sm text-gray-600">聖誕節外烩</span>
+        </a>
+        
+        <!-- 桌面导航 -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#services" class="text-gray-700 hover:text-primary transition-colors">我們的服務</a>
+          <a href="#occasions" class="text-gray-700 hover:text-primary transition-colors">適用場合</a>
+          <a href="#faq" class="text-gray-700 hover:text-primary transition-colors">常見問題</a>
+          <a href="#contact" class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full transition-all transform hover:scale-105">立即預約</a>
+        </div>
+        
+        <!-- 移动端菜单按钮 -->
+        <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
+          <i class="fa fa-bars text-xl transition-transform duration-300"></i>
+        </button>
+      </div>
+    </nav>
+    
+    <!-- 移动端导航菜单：移除「情境方案」链接 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full transform transition-all duration-300 -translate-y-2 opacity-0">
+      <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+        <a href="#services" class="text-gray-700 hover:text-primary py-2 transition-colors">我們的服務</a>
+        <a href="#occasions" class="text-gray-700 hover:text-primary py-2 transition-colors">適用場合</a>
+        <a href="#faq" class="text-gray-700 hover:text-primary py-2 transition-colors">常見問題</a>
+        <a href="#contact" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full text-center transition-all">立即預約</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区域 -->
+  <section class="relative pt-24 pb-20 md:pt-32 md:pb-32 bg-cover bg-center" style="background-image: url('https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/ff45e38308434a8aabe14187f6c9c88f.jpg~tplv-a9rns2rl98-24-95-exif:960:960.image?rcl=2025102710333149061493ED28F9F309C6&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1762137211&x-signature=jADCpbcdfN9rMVX8LZrrne1ljjU%3D');">
+    <div class="absolute inset-0 bg-dark/50"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-3xl">
+        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-display font-bold text-white leading-tight text-shadow-lg mb-6 animate-fade-in">
+          木人艸｜聖誕節外燴<br>一站式完成
+        </h1>
+        <p class="text-[clamp(1rem,2vw,1.25rem)] text-white/90 mb-8 text-shadow max-w-2xl">
+          我們替你把聖誕派對變簡單：到府佈置/節慶餐點/貼心動線，無論企業、校園、教會或家庭聚會，都能在預算內做出有儀式感、好拍又好吃的聖誕現場
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#contact" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full text-center font-medium transition-all text-lg transform hover:scale-105">
+            預約服務
+          </a>
+          <a href="#services" class="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/40 px-8 py-4 rounded-full text-center font-medium transition-all text-lg">
+            了解更多
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 装饰元素 -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="w-full h-auto">
+        <path fill="#F8F9FA" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 服务内容 -->
+  <section id="services" class="py-20 px-6">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-display font-bold text-dark mb-4">我們的聖誕服務</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">一站式解決您的聖誕派對需求，從場地布置到美味餐點，讓您輕鬆享受節慶氛圍</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- 服务1 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift">
+          <div class="h-56 overflow-hidden">
+            <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/0c00f55617b94256ade3e07b4a0d23d5.jpg~tplv-a9rns2rl98-24-95-exif:960:960.image?rcl=2025102710333149061493ED28F9F309C6&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1762137211&x-signature=qapFDlv3C7CaMNIm16FYIFVEa00%3D" alt="到府佈置" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa fa-home text-primary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">到府佈置</h3>
+            <p class="text-gray-600">專業團隊上門佈置，聖誕樹、燈飾、彩帶等節慶元素一應俱全，打造濃厚聖誕氛圍。提供3種主題風格選擇，可依場地大小調整規模。</p>
+          </div>
+        </div>
+        
+        <!-- 服务2 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift">
+          <div class="h-56 overflow-hidden">
+            <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/8c0d1ddad0bb4c2d8b8d34a3702a2a8e.jpg~tplv-a9rns2rl98-24-95-exif:960:960.image?rcl=2025102710333149061493ED28F9F309C6&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1762137211&x-signature=goDwPeL3MDr678kv59qFkwyut3c%3D" alt="節慶餐點" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+              <i class="fa fa-cutlery text-secondary text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">節慶餐點</h3>
+            <p class="text-gray-600">聖誕火雞、點心、甜點及飲品，由主廚團隊精心製作，採用新鮮食材，美味與視覺兼具，提供多種套餐組合與客製化選項。</p>
+          </div>
+        </div>
+        
+        <!-- 服务3 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift">
+          <div class="h-56 overflow-hidden">
+            <img src="https://p26-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/21aad726335d49afbd71c474cb1dabbb.jpg~tplv-a9rns2rl98-24-95-exif:960:960.image?rcl=2025102710333149061493ED28F9F309C6&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1762137211&x-signature=xxH%2B5sOvwAP%2F2hjd6HNyrplpXcM%3D" alt="貼心動線" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+          </div>
+          <div class="p-6">
+            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mb-4">
+              <i class="fa fa-map-signs text-accent text-xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">貼心動線</h3>
+            <p class="text-gray-600">專業規劃活動動線，從入場、用餐到互動環節，搭配節慶音樂與流程指引，確保活動流程順暢，賓客體驗舒適。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 适用场合 -->
+  <section id="occasions" class="py-20 px-6 bg-gray-50">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-display font-bold text-dark mb-4">適用場合</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">無論是什麼類型的聖誕聚會，我們都能為您量身打造完美的聖誕體驗</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 场合1 -->
+        <div class="bg-white rounded-xl shadow-md p-6 text-center hover-lift">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa fa-building text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">企業聚會</h3>
+          <p class="text-gray-600 text-sm">為企業打造溫馨又不失專業的聖誕聯歡，提供簡報設備整合、伴手禮客製等增值服務</p>
+        </div>
+        
+        <!-- 场合2 -->
+        <div class="bg-white rounded-xl shadow-md p-6 text-center hover-lift">
+          <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa fa-graduation-cap text-secondary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">校園活動</h3>
+          <p class="text-gray-600 text-sm">為學校師生帶來充滿歡樂的聖誕慶典，可搭配互動遊戲與表演環節，創造美好回憶</p>
+        </div>
+        
+        <!-- 场合3 -->
+        <div class="bg-white rounded-xl shadow-md p-6 text-center hover-lift">
+          <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa fa-church text-accent text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">教會慶典</h3>
+          <p class="text-gray-600 text-sm">莊嚴而溫馨的聖誕慶典佈置與餐點，尊重宗教儀式需求，傳達節日的意義與祝福</p>
+        </div>
+        
+        <!-- 场合4 -->
+        <div class="bg-white rounded-xl shadow-md p-6 text-center hover-lift">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fa fa-users text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold mb-2">家庭聚會</h3>
+          <p class="text-gray-600 text-sm">為家庭打造溫馨聖誕夜，提供兒童友善餐點與布置，讓您與親人盡情享受節日歡樂</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见问题 -->
+  <section id="faq" class="py-20 px-6 bg-gray-50">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-display font-bold text-dark mb-4">常見問題</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">關於聖誕節外烩服務的常見疑問，我們都為您整理好了</p>
+      </div>
+      
+      <div class="max-w-3xl mx-auto space-y-4">
+        <!-- FAQ 1 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <details class="group">
+            <summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none">
+              <span>Q1 檔期怎麼預約？最晚要提前多久？</span>
+              <i class="fa fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="mt-4 text-gray-600 faq-transition">
+              <p>A1 建議至少 14 天前預約；12/1–12/23 為熱門時段，越早討論越能確保檔期與佈置素材。可先線上預約後，我們將於24小時內與您聯繫確認細節。</p>
+            </div>
+          </details>
+        </div>
+        
+        <!-- FAQ 2 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <details class="group">
+            <summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none">
+              <span>Q2 預算怎麼估？是否能客製化？</span>
+              <i class="fa fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="mt-4 text-gray-600 faq-transition">
+              <p>A2 依人數與場地提供 NT$15,000 起套組；可加購甜點塔、熱可可吧、氣球拱門、桌卡/背板等，皆可依企業 CI 或主題客製。提供免費現場勘測與報價服務。</p>
+            </div>
+          </details>
+        </div>
+        
+        <!-- FAQ 3 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <details class="group">
+            <summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none">
+              <span>Q3 場地需要什麼條件？電力/桌椅怎麼處理？</span>
+              <i class="fa fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="mt-4 text-gray-600 faq-transition">
+              <p>A3 需有基本電力與餐台空間；桌椅由場地方提供，或可協助代租（另計）；室外可評估雨備方案，提供臨時遮雨棚與保暖設備建議。</p>
+            </div>
+          </details>
+        </div>
+        
+        <!-- FAQ 4 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <details class="group">
+            <summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none">
+              <span>Q4 流程需要多久？進撤場怎麼安排？</span>
+              <i class="fa fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="mt-4 text-gray-600 faq-transition">
+              <p>A4 典型流程：進場 60–90 分 → 活動 → 撤場 30–60 分，依規模微調。可協調非營業時間進場，避免干擾正常作息。</p>
+            </div>
+          </details>
+        </div>
+        
+        <!-- FAQ 5 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <details class="group">
+            <summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none">
+              <span>Q5 訂金與取消規則？是否可改期？</span>
+              <i class="fa fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="mt-4 text-gray-600 faq-transition">
+              <p>A5 下單收取總金額30%做為訂金；D-7 前退 70%、D-3 前退 30%，之後恕不退；改期視檔期，可能有材料/人力差額。特殊狀況可協商處理。</p>
+            </div>
+          </details>
+        </div>
+        
+        <!-- FAQ 6 -->
+        <div class="bg-white rounded-xl shadow-md p-6 hover-lift">
+          <details class="group">
+            <summary class="flex justify-between items-center font-bold text-lg cursor-pointer list-none">
+              <span>Q6 可服務的人數區間？是否提供素/無酒精選項？</span>
+              <i class="fa fa-chevron-down text-primary transition-transform group-open:rotate-180"></i>
+            </summary>
+            <div class="mt-4 text-gray-600 faq-transition">
+              <p>A6 10–20 人至 100+ 皆可；可提供素食、無酒精與敏感食材替代（如 gluten-free），請於詢價時註明需求，我們將提供對應菜單。</p>
+            </div>
+          </details>
+        </div>
+      </div>
+      
+      <div class="text-center mt-10">
+        <p class="text-gray-600">還有其他問題？<a href="#contact" class="text-primary hover:underline">聯繫我們獲得詳細解答</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系表单 -->
+  <section id="contact" class="py-20 px-6 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 transform origin-top-right -z-10"></div>
+    <div class="container mx-auto">
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="grid md:grid-cols-2">
+          <div class="p-8 md:p-12 bg-primary text-white">
+            <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-display font-bold mb-6">預約您的聖誕服務</h2>
+            <p class="mb-8 opacity-90">填寫表單後，我們將盡快與您聯繫，為您規劃完美的聖誕派對方案</p>
+            
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="mt-1 mr-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i class="fa fa-phone"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold mb-1">電話諮詢</h3>
+                  <p class="opacity-80">02-1234-5678</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="mt-1 mr-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i class="fa fa-envelope"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold mb-1">電子郵件</h3>
+                  <p class="opacity-80">info@muzentsao.com</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="mt-1 mr-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <i class="fa fa-clock-o"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold mb-1">服務時間</h3>
+                  <p class="opacity-80">週一至週日 9:00-18:00</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-12">
+              <h3 class="font-bold mb-4">關注我們</h3>
+              <div class="flex space-x-4">
+                <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+                  <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+                  <i class="fa fa-instagram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors">
+                  <i class="fa fa-line"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-8 md:p-12">
+            <form id="contact-form" action="https://formsubmit.co/admin_1@muzentsao.com" method="POST" class="space-y-6">
+              <div>
+                <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+              </div>
+              
+              <div>
+                <label for="phone" class="block text-gray-700 font-medium mb-2">電話</label>
+                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+              </div>
+              
+              <div>
+                <label for="date" class="block text-gray-700 font-medium mb-2">活動日期</label>
+                <input type="date" id="date" name="date" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+              </div>
+              
+              <div>
+                <label for="budget" class="block text-gray-700 font-medium mb-2">預算範圍</label>
+                <select id="budget" name="budget" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                  <option value="">請選擇預算範圍</option>
+                  <option value="10000以下">10,000元以下</option>
+                  <option value="10000-30000">10,000 - 30,000元</option>
+                  <option value="30000-50000">30,000 - 50,000元</option>
+                  <option value="50000-100000">50,000 - 100,000元</option>
+                  <option value="100000以上">100,000元以上</option>
+                </select>
+              </div>
+              
+              <div>
+                <label for="event-type" class="block text-gray-700 font-medium mb-2">活動類型</label>
+                <select id="event-type" name="event-type" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                  <option value="">請選擇活動類型</option>
+                  <option value="企業聚會">企業聚會</option>
+                  <option value="校園活動">校園活動</option>
+                  <option value="教會慶典">教會慶典</option>
+                  <option value="家庭聚會">家庭聚會</option>
+                  <option value="其他">其他</option>
+                </select>
+              </div>
+              
+              <div>
+                <label for="message" class="block text-gray-700 font-medium mb-2">備註</label>
+                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="請告訴我們您的特殊需求或疑問"></textarea>
+              </div>
+              
+              <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-105">
+                提交預約
+              </button>
+              
+              <p class="text-xs text-gray-500 text-center">我們將於24小時內與您聯繫，感謝您的信任</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚：移除「情境方案」链接 -->
+  <footer class="bg-dark text-white py-12 px-6">
+    <div class="container mx-auto">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-xl font-display font-bold mb-4">木人艸</h3>
+          <p class="text-gray-400 mb-4">聖誕節外烩，一站式完成</p>
+          <p class="text-gray-400">讓每個聖誕聚會都難忘而獨特</p>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4">快速連結</h4>
+          <ul class="space-y-2">
+            <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">我們的服務</a></li>
+            <li><a href="#occasions" class="text-gray-400 hover:text-white transition-colors">適用場合</a></li>
+            <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">常見問題</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">聯繫我們</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4">服務項目</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">到府佈置</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">節慶餐點</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">貼心動線</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">活動策劃</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-bold mb-4">聯繫資訊</h4>
+          <ul class="space-y-2">
+            <li class="flex items-center text-gray-400">
+              <i class="fa fa-phone mr-2"></i> 02-1234-5678
+            </li>
+            <li class="flex items-center text-gray-400">
+              <i class="fa fa-envelope mr-2"></i> info@muzentsao.com
+            </li>
+            <li class="flex items-center text-gray-400">
+              <i class="fa fa-map-marker mr-2"></i> 台北市大安區XX路XX號
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2023 木人艸聖誕節外烩. 保留所有權利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 原有JS完全保留 -->
+  <script>
+    // 雪花动画效果优化
+    function createSnowflakes() {
+      const container = document.getElementById('snow-container');
+      const count = 70; // 增加雪花数量
+      const symbols = ['❄', '❅', '❆']; // 多样化雪花符号
+      
+      for (let i = 0; i < count; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+        
+        // 随机位置、大小和动画参数
+        const size = Math.random() * 10 + 5;
+        snowflake.style.fontSize = `${size}px`;
+        snowflake.style.left = `${Math.random() * 100}vw`;
+        snowflake.style.top = `-${size}px`;
+        snowflake.style.animationDuration = `${Math.random() * 15 + 8}s`; // 延长动画时间
+        snowflake.style.animationDelay = `${Math.random() * 8}s`;
+        snowflake.style.opacity = Math.random() * 0.8 + 0.2;
+        snowflake.style.transform = `rotate(${Math.random() * 360}deg)`;
+        
+        container.appendChild(snowflake);
+      }
+    }
+    
+    // 导航栏滚动效果优化
+    function handleNavbarScroll() {
+      const navbar = document.getElementById('navbar');
+      const navContent = navbar.querySelector('nav');
+      
+      if (window.scrollY > 50) {
+        navContent.classList.add('py-2');
+        navContent.classList.remove('py-4');
+        navbar.classList.add('bg-white', 'shadow-md');
+      } else {
+        navContent.classList.add('py-4');
+        navContent.classList.remove('py-2');
+        navbar.classList.remove('bg-white', 'shadow-md');
+      }
+    }
+    
+    // 移动端菜单动画优化
+    function setupMobileMenu() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = menuToggle.querySelector('i');
+      
+      menuToggle.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('hidden')) {
+          // 打开菜单
+          mobileMenu.classList.remove('hidden', '-translate-y-2', 'opacity-0');
+          mobileMenu.classList.add('translate-y-0', 'opacity-100');
+          menuIcon.classList.add('rotate-90');
+        } else {
+          // 关闭菜单
+          mobileMenu.classList.add('-translate-y-2', 'opacity-0');
+          mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+          menuIcon.classList.remove('rotate-90');
+          // 延迟隐藏，等待动画完成
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+          }, 300);
+        }
+      });
+    }
+    
+    // 平滑滚动
+    function setupSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+            
+            // 关闭移动菜单
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('-translate-y-2', 'opacity-0');
+              mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+              document.querySelector('#menu-toggle i').classList.remove('rotate-90');
+              setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+              }, 300);
+            }
+          }
+        });
+      });
+    }
+    
+    // 表单提交反馈
+    function setupFormSubmission() {
+      const form = document.getElementById('contact-form');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+          
+          // 防止重复提交
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 提交中...';
+          
+          // 模拟提交延迟（实际项目中会由formsubmit处理）
+          setTimeout(() => {
+            submitBtn.innerHTML = '<i class="fa fa-check mr-2"></i> 提交成功';
+            submitBtn.classList.remove('bg-primary');
+            submitBtn.classList.add('bg-green-600');
+            
+            // 重置表单
+            form.reset();
+            
+            // 恢复按钮状态
+            setTimeout(() => {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalText;
+              submitBtn.classList.remove('bg-green-600');
+              submitBtn.classList.add('bg-primary');
+            }, 3000);
+          }, 1500);
+        });
+      }
+    }
+    
+    // 页面加载完成后初始化
+    window.addEventListener('DOMContentLoaded', () => {
+      createSnowflakes();
+      handleNavbarScroll();
+      setupMobileMenu();
+      setupSmoothScroll();
+      setupFormSubmission();
+      
+      // 监听滚动事件
+      window.addEventListener('scroll', handleNavbarScroll);
+    });
+  </script>
+</body>
+</html>

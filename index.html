@@ -101,28 +101,41 @@
     </div>
   </header>
 
-  <!-- 英雄区域 -->
-  <section class="relative pt-24 pb-20 md:pt-32 md:pb-32 bg-cover bg-center"
+  <!-- 英雄區域（只調整高度/字級，保留原本波浪不動） -->
+<section
+  class="relative bg-cover bg-center text-white
+         pt-24 md:pt-32 pb-24 md:pb-32
+         min-h-[60vh] md:min-h-[72vh]"
   style="background-image: url('1U4A6883%20copy%20%281%29.jpg');">
-    <div class="absolute inset-0 bg-dark/50"></div>
-    <div class="container mx-auto px-6 relative z-10">
-      <div class="max-w-3xl">
-        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-display font-bold text-white leading-tight text-shadow-lg mb-6 animate-fade-in">
-          木人艸｜聖誕節外燴<br>
-        </h1>
-        <p class="text-[clamp(0.9rem,1.4vw,1.1rem)] text-white/90 leading-relaxed mb-6 max-w-xl text-shadow">
-  我們替你把聖誕派對變簡單，無論企業、校園、教會或家庭聚會，都能在預算內做出有儀式感、好拍又好吃的聖誕現場。
-</p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#contact" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full text-center font-medium transition-all text-lg transform hover:scale-105">
-            預約服務
-          </a>
-          <a href="#services" class="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border border-white/40 px-8 py-4 rounded-full text-center font-medium transition-all text-lg">
-            了解更多
-          </a>
-        </div>
+
+  <!-- 暗層 -->
+  <div class="absolute inset-0 bg-dark/50"></div>
+
+  <!-- 內容 -->
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-3xl">
+      <h1 class="font-display font-bold leading-tight text-shadow-lg mb-4
+                 text-[clamp(1.75rem,4.2vw,3rem)]">
+        木人艸｜聖誕節外燴
+      </h1>
+
+      <p class="text-white/90 text-shadow max-w-xl mb-8 leading-relaxed
+                text-[clamp(0.9rem,1.15vw,1.05rem)]">
+        我們替你把聖誕派對變簡單，無論企業、校園、教會或家庭聚會，都能在預算內做出有儀式感、好拍又好吃的聖誕現場。
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#contact"
+           class="bg-primary hover:bg-primary/90 px-8 py-4 rounded-full text-center font-medium transition-all hover:scale-105">
+          預約服務
+        </a>
+        <a href="#services"
+           class="bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/40 px-8 py-4 rounded-full text-center font-medium transition-all">
+          了解更多
+        </a>
       </div>
     </div>
+  </div>
     
      <!-- 裝飾元素 -->
 <div class="absolute bottom-0 left-0 w-full overflow-hidden">

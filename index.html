@@ -125,12 +125,15 @@
     </div>
     
     <!-- 装饰元素 -->
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" class="w-full h-auto">
-        <path fill="#F8F9FA" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
-      </svg>
-    </div>
-  </section>
+    <!-- 裝飾元素：把波浪往下蓋 1px 並拉高 -->
+<div class="absolute left-0 w-full overflow-hidden leading-[0] bottom-[-1px]">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 140" class="block w-full h-[140px] md:h-[180px]">
+    <path fill="#F8F9FA" fill-opacity="1"
+      d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,140L1360,140C1280,140,1120,140,960,140C800,140,640,140,480,140C320,140,160,140,80,140L0,140Z">
+    </path>
+  </svg>
+</div>
+
 
   <section id="services" class="py-20 px-6">
   <div class="container mx-auto">

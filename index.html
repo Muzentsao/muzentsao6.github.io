@@ -428,7 +428,7 @@
           </div>
           
           <div class="p-8 md:p-12">
-           <form id="contact-form" action="https://formspree.io/f/mjkpkdzw" method="POST" accept-charset="UTF-8" class="space-y-6">
+           <form id="contact-form" class="space-y-6">
               <div>
                 <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
                 <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
@@ -465,12 +465,15 @@
                   <option value="其他">其他</option>
                 </select>
               </div>
-              
-              <div>
-                <label for="message" class="block text-gray-700 font-medium mb-2">備註</label>
-                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="請告訴我們您的特殊需求或疑問"></textarea>
-              </div>
-              
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <label for="trap-field">請勿填寫此欄位</label>
+                <input type="text" id="trap-field" name="website_url" tabindex="-1" autocomplete="off">
+              </div>
+              
+                            <div>
+                <label for="message" class="block text-gray-700 font-medium mb-2">備註</label>
+               <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="請告訴我們您的特殊需求或疑問"></textarea>
+              </div>
               <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all transform hover:scale-105">
                 提交預約
               </button>
@@ -483,9 +486,7 @@
     </div>
   </section>
 
-  <input type="hidden" name="_subject"  value="網站詢問｜聖誕節外燴">
-<input type="hidden" name="_redirect" value="https://muzentsao.github.io/muzentsao6.github.io/?sent=1#contact">
-<input type="text"    name="_gotcha"  class="hidden" style="display:none"> <!-- 蜜罐，防垃圾 -->
+  
 
   <!-- 页脚：移除「情境方案」链接 -->
   <footer class="bg-dark text-white py-12 px-6">
@@ -645,38 +646,68 @@
       });
     }
     
-    // 表单提交反馈
-    function setupFormSubmission() {
-      const form = document.getElementById('contact-form');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          const submitBtn = form.querySelector('button[type="submit"]');
-          const originalText = submitBtn.innerHTML;
-          
-          // 防止重复提交
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 提交中...';
-          
-          // 模拟提交延迟（实际项目中会由formsubmit处理）
-          setTimeout(() => {
-            submitBtn.innerHTML = '<i class="fa fa-check mr-2"></i> 提交成功';
-            submitBtn.classList.remove('bg-primary');
-            submitBtn.classList.add('bg-green-600');
-            
-            // 重置表单
-            form.reset();
-            
-            // 恢复按钮状态
-            setTimeout(() => {
-              submitBtn.disabled = false;
-              submitBtn.innerHTML = originalText;
-              submitBtn.classList.remove('bg-green-600');
-              submitBtn.classList.add('bg-primary');
-            }, 3000);
-          }, 1500);
-        });
-      }
-    }
+    // 表单提交反馈 - [新版] 串接 Google Apps Script
+    function setupFormSubmission() {
+      // ★ 這就是您剛剛部署好的 Google Apps Script 網址
+      const GAS_URL = 'https://script.google.com/macros/s/AKfyobzT1XBOuAe4MIOHL8QjYdpkulomZNSWCIOS-MfOLF1MbzHocZl1MrbW1oYw4UwRcaAR/exec'; 
+
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault(); // 阻止表單預設的傳統提交行為
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+
+        // 防止重複提交
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin mr-2"></i> 提交中...';
+
+        // 將表單資料轉為 JSON 物件
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => {
+          data[key] = value;
+        });
+
+        // 使用 fetch API 將資料 POST 到 GAS
+        fetch(GAS_URL, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          mode: 'no-cors', // 由於 GAS 的限制，我們使用 no-cors
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+           // 注意：在 'no-cors' 模式下，我們無法讀取 response.json()
+           // 我們假設它總是成功的 (因為我們的 GAS 會處理錯誤和蜜罐)
+           
+           // 顯示提交成功
+           submitBtn.innerHTML = '<i class="fa fa-check mr-2"></i> 提交成功';
+           submitBtn.classList.remove('bg-primary');
+           submitBtn.classList.add('bg-green-600');
+           form.reset(); // 清空表單
+        })
+        .catch(error => {
+          // 網路層級的錯誤 (例如斷線)
+          console.error('Form submission error:', error);
+          submitBtn.innerHTML = '<i class="fa fa-times mr-2"></i> 提交失敗';
+          submitBtn.classList.remove('bg-primary');
+          submitBtn.classList.add('bg-red-600'); // 顯示紅色錯誤
+        })
+        .finally(() => {
+          // 3 秒後恢復按鈕
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+            submitBtn.classList.remove('bg-green-600', 'bg-red-600');
+            submitBtn.classList.add('bg-primary');
+          }, 3000);
+        });
+      });
+    }
     
     // 页面加载完成后初始化
     window.addEventListener('DOMContentLoaded', () => {
